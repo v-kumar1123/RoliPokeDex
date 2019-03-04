@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -36,10 +37,17 @@ public class RoliPokeDex extends JFrame {
 
     public RoliPokeDex() {
         super("K0904676");
+        buttons.add(save);
+        buttons.add(saveChanges);
+        buttons.add(neww);
+        buttons.add(delete);
         setVisible(true);
         setLayout(null);
         setSize(800,600);
         BufferedReader reader;
+        for(JButton b: buttons)  {
+            b.addActionListener((e) ->process(e));
+        }
         try{
             reader=new BufferedReader(new FileReader("C:\\Users\\varun\\Desktop\\RoliPokeDex\\src\\ContactLoader"));
             String line=reader.readLine();
@@ -79,8 +87,15 @@ public class RoliPokeDex extends JFrame {
         add(address);
         add(addressLabel);
         add(scrollPane);
+        add(saveChanges);
+        add(save);
+        add(neww);
+        add(delete);
 
 
 
+    }
+    public void process(ActionEvent e) {
+        //if(e.getActionCommand()==)
     }
 }
