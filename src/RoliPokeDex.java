@@ -1,9 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.*;
 import java.util.ArrayList;
 
 public class RoliPokeDex extends JFrame {
@@ -26,6 +26,7 @@ public class RoliPokeDex extends JFrame {
 
     JList contacts2=new JList(contacts);
     JScrollPane scrollPane=new JScrollPane(contacts2);
+    boolean editing=false;
 
     /*TODO: Change buttons (Save Changes and Delete contact and Save an New) change via setVisible().
         TODO: Have a are you sure window open when someone clicks away from the window while editing, does not save changes. Get the text from the Contact object.
@@ -91,11 +92,62 @@ public class RoliPokeDex extends JFrame {
         add(save);
         add(neww);
         add(delete);
+        if(editing) {
+            save.setVisible(false);
+            neww.setVisible(false);
+            saveChanges.setVisible(true);
+            delete.setVisible(true);
+        }
+        else{
+            save.setVisible(true);
+            neww.setVisible(true);
+            saveChanges.setVisible(false);
+            delete.setVisible(false);
 
+        }
+
+        saveChanges.setBounds(0,215,150,50);
+
+        save.setBounds(0,215,150,50);
+
+        delete.setBounds(0,285,150,50);
+
+        neww.setBounds(0,285,150,50);
+
+
+        contacts2.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                process(new ActionEvent(e.getSource(),e.getID(),""));
+            }
+        });
 
 
     }
     public void process(ActionEvent e) {
-        //if(e.getActionCommand()==)
+        PrintWriter outputStream;
+        try {
+            String fileName = "ContactLoader.txt";
+            outputStream = new PrintWriter(fileName);
+        }catch (FileNotFoundException u){u.printStackTrace();}
+        if(contacts2.getSelectedIndex()>=0) {
+            System.out.println("HEYYO");
+            editing=true;
+        }
+        if(editing) {
+            save.setVisible(false);
+            neww.setVisible(false);
+            saveChanges.setVisible(true);
+            delete.setVisible(true);
+        }
+        else{
+            save.setVisible(true);
+            neww.setVisible(true);
+            saveChanges.setVisible(false);
+            delete.setVisible(false);
+
+        }
+        if(e.getActionCommand()==save.getText()) {
+            //TODO: write to file, make new object and add to Contact ArrayList, as long as it has a first and last name.
+        }
     }
 }

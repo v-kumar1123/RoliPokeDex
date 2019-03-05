@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2c2095fe-bb8e-45cc-8860-d0286bbe955d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Contact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ContactLoader" beforeDir="false" afterPath="$PROJECT_DIR$/src/ContactLoader" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RoliPokeDex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RoliPokeDex.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,7 +18,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
+            <state relative-caret-position="48">
               <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
               <folding>
                 <element signature="e#67#68#0" expanded="true" />
@@ -31,11 +31,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RoliPokeDex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="15" column="49" lean-forward="true" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+            <state relative-caret-position="475">
+              <caret line="149" column="121" selection-start-line="149" selection-start-column="121" selection-end-line="149" selection-end-column="121" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#242#251#0" expanded="true" />
+                <element signature="e#4630#4798#0" expanded="true" />
+                <element signature="e#4797#4798#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,13 +44,17 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ContactLoader">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="25" selection-start-column="25" selection-end-column="25" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Contact.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
+            <state relative-caret-position="816">
               <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
               <folding>
                 <element signature="e#349#350#0" expanded="true" />
@@ -60,8 +65,6 @@
                 <element signature="e#563#564#0" expanded="true" />
                 <element signature="e#604#605#0" expanded="true" />
                 <element signature="e#640#641#0" expanded="true" />
-                <element signature="e#933#934#0" expanded="true" />
-                <element signature="e#951#952#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,9 +93,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="632" />
-    <option name="width" value="654" />
-    <option name="height" value="688" />
+    <option name="x" value="949" />
+    <option name="width" value="980" />
+    <option name="height" value="1031" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -101,8 +104,9 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551741519371" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../IdioticFinalCalc" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551742138142" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
@@ -156,7 +160,21 @@
       <option name="project" value="LOCAL" />
       <updated>1551712291224</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="figured out file reading. Figure out file writing, buttons and the rest">
+      <created>1551741898430</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1551741898430</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Keep going">
+      <created>1551742145666</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1551742145666</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -195,12 +213,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit 2" />
     <MESSAGE value="get it done you idiot" />
-    <option name="LAST_COMMIT_MESSAGE" value="get it done you idiot" />
+    <MESSAGE value="figured out file reading. Figure out file writing, buttons and the rest" />
+    <MESSAGE value="Keep going" />
+    <option name="LAST_COMMIT_MESSAGE" value="Keep going" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/MainFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
+        <state relative-caret-position="48">
           <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
           <folding>
             <element signature="e#67#68#0" expanded="true" />
@@ -211,7 +231,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Contact.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
+        <state relative-caret-position="816">
           <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
           <folding>
             <element signature="e#349#350#0" expanded="true" />
@@ -222,22 +242,25 @@
             <element signature="e#563#564#0" expanded="true" />
             <element signature="e#604#605#0" expanded="true" />
             <element signature="e#640#641#0" expanded="true" />
-            <element signature="e#933#934#0" expanded="true" />
-            <element signature="e#951#952#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ContactLoader">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="25" selection-start-column="25" selection-end-column="25" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RoliPokeDex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="15" column="49" lean-forward="true" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+        <state relative-caret-position="475">
+          <caret line="149" column="121" selection-start-line="149" selection-start-column="121" selection-end-line="149" selection-end-column="121" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#242#251#0" expanded="true" />
+            <element signature="e#4630#4798#0" expanded="true" />
+            <element signature="e#4797#4798#0" expanded="true" />
           </folding>
         </state>
       </provider>
