@@ -28,6 +28,7 @@ public class RoliPokeDex extends JFrame {
     JList contacts2=new JList(contacts.toArray());
     JScrollPane scrollPane=new JScrollPane(contacts2);
     JButton clear=new JButton("Clear");
+    File file = new File ("C:\\Users\\OTHSCS097\\Desktop\\RoliPokeDex\\src\\ContactLoader");
     boolean editing=false;
 
     /*TODO: Change buttons (Save Changes and Delete contact and Save an New) change via setVisible().
@@ -55,7 +56,7 @@ public class RoliPokeDex extends JFrame {
         int x=0;
         clear.setBounds(0,500,230,50);
         try{
-            reader=new BufferedReader(new FileReader("C:\\Users\\OTHSCS097\\Desktop\\RoliPokeDex\\src\\ContactLoader"));
+            reader=new BufferedReader(new FileReader(file));
             String line=reader.readLine();
             //String firstName, String lastName, int number, String address
             while(line!=null) {
@@ -135,8 +136,7 @@ public class RoliPokeDex extends JFrame {
     public void process(ActionEvent e) {
         PrintWriter outputStream;
         try {
-            String fileName = "ContactLoader.txt";
-            outputStream = new PrintWriter(fileName);
+            outputStream = new PrintWriter(file);
         }catch (FileNotFoundException u){u.printStackTrace();}
         if(contacts2.getSelectedIndex()>=0) {
             System.out.println("HEYYO");
@@ -155,17 +155,35 @@ public class RoliPokeDex extends JFrame {
             delete.setVisible(false);
 
         }
+        if(e.getActionCommand().equals("")) {
+            firstName.setText(contacts.get(contacts2.getSelectedIndex()).getFirstName());
+
+            lastName.setText(contacts.get(contacts2.getSelectedIndex()).getLastName());
+
+            address.setText(contacts.get(contacts2.getSelectedIndex()).getAddress());
+
+            phoneNumber.setText(contacts.get(contacts2.getSelectedIndex()).getNumber()+"");
+
+        }
+        if(e.getActionCommand().equals(saveChanges.getText())) {
+            firstName.setText(firstName.getText());
+            lastName.setText(lastName.getText());
+            address.setText(address.getText());
+            phoneNumber.setText(phoneNumber.getText());
+
+            //TODO 3/5/19 : CHANGE FILE TO SAVE CHANGES
+        }
         if(e.getActionCommand().equals(save.getText())) {
             //TODO: write to file, make new object and add to Contact ArrayList, as long as it has a first and last name.
-            if(!firstName.getText().equals("")&&!lastName.equals("")) {
+            if(!firstName.getText().equals("")&&!lastName.getText().equals("")) {
                 System.out.println("HELLO");
                 try {
-                    PrintWriter writer = new PrintWriter("ContactLoader.txt", "UTF-8");
+                    PrintWriter writer = new PrintWriter(file);
                     writer.println(firstName.getText()+" "+lastName.getText()+" "+phoneNumber.getText()+" "+address.getText());
                     writer.close();
                 } catch (FileNotFoundException u) {
                     u.printStackTrace();
-                }catch (UnsupportedEncodingException i) {i.printStackTrace();}
+                }
             }
             else {
                 if(firstName.getText().equals("")) {
@@ -178,7 +196,7 @@ public class RoliPokeDex extends JFrame {
 
             BufferedReader reader;
             try{
-                reader=new BufferedReader(new FileReader("C:\\Users\\OTHSCS097\\Desktop\\RoliPokeDex\\src\\ContactLoader"));
+                reader=new BufferedReader(new FileReader("C:\\Users\\othscs097\\Desktop\\RoliPokeDex\\src\\ContactLoader"));
                 String line=reader.readLine();
                 //String firstName, String lastName, int number, String address
                 while(line!=null) {
