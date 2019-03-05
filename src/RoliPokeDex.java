@@ -27,6 +27,7 @@ public class RoliPokeDex extends JFrame {
     ArrayList<Contact> contacts=new ArrayList<Contact>();
     JList contacts2=new JList(contacts.toArray());
     JScrollPane scrollPane=new JScrollPane(contacts2);
+    JButton clear=new JButton("Clear");
     boolean editing=false;
 
     /*TODO: Change buttons (Save Changes and Delete contact and Save an New) change via setVisible().
@@ -43,6 +44,7 @@ public class RoliPokeDex extends JFrame {
         buttons.add(saveChanges);
         buttons.add(neww);
         buttons.add(delete);
+        buttons.add(clear);
         setVisible(true);
         setLayout(null);
         setSize(800,600);
@@ -51,6 +53,7 @@ public class RoliPokeDex extends JFrame {
             b.addActionListener((e) ->process(e));
         }
         int x=0;
+        clear.setBounds(0,500,230,50);
         try{
             reader=new BufferedReader(new FileReader("C:\\Users\\OTHSCS097\\Desktop\\RoliPokeDex\\src\\ContactLoader"));
             String line=reader.readLine();
@@ -63,7 +66,7 @@ public class RoliPokeDex extends JFrame {
             reader.close();
         }catch (IOException r) {r.printStackTrace();}
 
-
+        add(clear);
 
         //contacts.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//
         scrollPane.setBounds(450,0,300,550);
@@ -152,10 +155,17 @@ public class RoliPokeDex extends JFrame {
             delete.setVisible(false);
 
         }
-        if(e.getActionCommand()==save.getText()) {
+        if(e.getActionCommand().equals(save.getText())) {
             //TODO: write to file, make new object and add to Contact ArrayList, as long as it has a first and last name.
             if(!firstName.getText().equals("")&&!lastName.equals("")) {
-
+                System.out.println("HELLO");
+                try {
+                    PrintWriter writer = new PrintWriter("ContactLoader.txt", "UTF-8");
+                    writer.println(firstName.getText()+" "+lastName.getText()+" "+phoneNumber.getText()+" "+address.getText());
+                    writer.close();
+                } catch (FileNotFoundException u) {
+                    u.printStackTrace();
+                }catch (UnsupportedEncodingException i) {i.printStackTrace();}
             }
             else {
                 if(firstName.getText().equals("")) {
@@ -165,6 +175,23 @@ public class RoliPokeDex extends JFrame {
                     lastNameLabel.setForeground(Color.RED);
                 }
             }
+
+            BufferedReader reader;
+            try{
+                reader=new BufferedReader(new FileReader("C:\\Users\\OTHSCS097\\Desktop\\RoliPokeDex\\src\\ContactLoader"));
+                String line=reader.readLine();
+                //String firstName, String lastName, int number, String address
+                while(line!=null) {
+                    contacts.add(new Contact(line.split(" ")[0],line.split(" ")[1],Integer.parseInt(line.split(" ")[2]),line.split(" ")[3]));
+                    contacts2.setListData(contacts.toArray());
+                    line = reader.readLine();
+                }
+                reader.close();
+            }catch (IOException r) {r.printStackTrace();}
+        }
+        if(e.getActionCommand().equals(clear.getText())) {
+            contacts.clear();
+            contacts2.setListData(contacts.toArray());
         }
     }
 }
