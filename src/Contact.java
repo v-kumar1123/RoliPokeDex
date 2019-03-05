@@ -1,7 +1,7 @@
-public class Contact {
+public class Contact implements Comparable {
     String firstName="",lastName="",address="";
     int number;
-    public Contact(String firstName, String lastName, int number, String address) {
+    public Contact(String firstName, String lastName, int number, String address){
         this.firstName=firstName;
         this.lastName=lastName;
         this.number=number;
@@ -42,5 +42,16 @@ public class Contact {
 
     public String toString() {
         return ""+lastName+", "+firstName;
+    }
+
+    public int compareTo(Object o) {
+        Contact k= (Contact)o;
+
+        if(((Contact) o).getLastName().compareTo(getLastName())!=0) {
+            return ((Contact) o).getLastName().compareTo(getLastName());
+        }
+        else {
+            return ((Contact) o).getFirstName().compareTo(getFirstName());
+        }
     }
 }

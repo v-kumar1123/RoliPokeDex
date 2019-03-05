@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class RoliPokeDex extends JFrame {
     ArrayList<JButton> buttons=new ArrayList<JButton>();
@@ -22,9 +23,9 @@ public class RoliPokeDex extends JFrame {
     JLabel phoneNumberLabel=new JLabel("Phone Number: ");
     JLabel addressLabel=new JLabel("Address: ");
     Font font = new Font("Monotype Corsiva",Font.BOLD,24);
-    DefaultListModel contacts=new DefaultListModel();
-
-    JList contacts2=new JList(contacts);
+    //ArrayList<Contact> contacts=new ArrayList<Contact>();
+    ArrayList<Contact> contacts=new ArrayList<Contact>();
+    JList contacts2=new JList(contacts.toArray());
     JScrollPane scrollPane=new JScrollPane(contacts2);
     boolean editing=false;
 
@@ -49,16 +50,21 @@ public class RoliPokeDex extends JFrame {
         for(JButton b: buttons)  {
             b.addActionListener((e) ->process(e));
         }
+        int x=0;
         try{
-            reader=new BufferedReader(new FileReader("C:\\Users\\varun\\Desktop\\RoliPokeDex\\src\\ContactLoader"));
+            reader=new BufferedReader(new FileReader("C:\\Users\\OTHSCS097\\Desktop\\RoliPokeDex\\src\\ContactLoader"));
             String line=reader.readLine();
             //String firstName, String lastName, int number, String address
             while(line!=null) {
-                contacts.addElement(new Contact(line.split(" ")[0],line.split(" ")[1],Integer.parseInt(line.split(" ")[2]),line.split(" ")[3]));
+                contacts.add(new Contact(line.split(" ")[0],line.split(" ")[1],Integer.parseInt(line.split(" ")[2]),line.split(" ")[3]));
+                contacts2.setListData(contacts.toArray());
                 line = reader.readLine();
             }
             reader.close();
         }catch (IOException r) {r.printStackTrace();}
+
+
+
         //contacts.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);//
         scrollPane.setBounds(450,0,300,550);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -148,6 +154,17 @@ public class RoliPokeDex extends JFrame {
         }
         if(e.getActionCommand()==save.getText()) {
             //TODO: write to file, make new object and add to Contact ArrayList, as long as it has a first and last name.
+            if(!firstName.getText().equals("")&&!lastName.equals("")) {
+
+            }
+            else {
+                if(firstName.getText().equals("")) {
+                    firstNameLabel.setForeground(Color.RED);
+                }
+                if(lastName.getText().equals("")) {
+                    lastNameLabel.setForeground(Color.RED);
+                }
+            }
         }
     }
 }
