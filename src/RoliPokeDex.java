@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class RoliPokeDex extends JFrame {
+    //HEEEY ITS MEEE Varun Kumar Period 3 Tully, 3/7/19
     ArrayList<JButton> buttons=new ArrayList<JButton>();
     JTextField firstName=new JTextField();
     JTextField lastName=new JTextField();
@@ -32,7 +33,7 @@ public class RoliPokeDex extends JFrame {
     JList contacts2=new JList(contacts.toArray());
     JScrollPane scrollPane=new JScrollPane(contacts2);
     JButton clear=new JButton("Clear");
-    File file = new File ("C:\\Users\\varun\\Desktop\\RoliPokeDex\\ContactLoader");
+    File file = new File ("C:\\Users\\OTHSCS097\\Desktop\\RoliPokeDex\\ContactLoader");
     boolean editing=false;
 
     /*TODO: Change buttons (Save Changes and Delete contact and Save an New) change via setVisible().
@@ -44,7 +45,7 @@ public class RoliPokeDex extends JFrame {
      */
 
     public RoliPokeDex() {
-        super("K0904676");
+        super("K0904676- Rolodex");
         buttons.add(save);
         buttons.add(saveChanges);
         buttons.add(neww);
@@ -183,10 +184,9 @@ public class RoliPokeDex extends JFrame {
                               System.out.println(oldValue.getLastName());
                               System.out.println("JAI HOOO");
                               JOptionPane jOptionPane = new JOptionPane("Confirm Changes");
-                              JDialog jDialog= jOptionPane.createDialog((Frame)null,"Would you like to change away? All unsaved changes will be lost.");
                                 add(jOptionPane,SwingConstants.RIGHT);
                               Object[] op = {"Yes", "No"};
-                              int result = JOptionPane.showOptionDialog(jOptionPane, "Would you like to change away? All unsaved changes will be lost.", "Confirm Changeaway", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, op, op[1]);
+                              int result=JOptionPane.showConfirmDialog(this,"Would you like to change away? All unsaved changes will be lost.");
                                 jOptionPane.setAlignmentX(800);
                               jOptionPane.setAlignmentY(400);
                               if (JOptionPane.YES_OPTION == result) {
@@ -259,10 +259,40 @@ public class RoliPokeDex extends JFrame {
 
         }
         if(e.getActionCommand().equals(saveChanges.getText())) {
-            firstName.setText(firstName.getText());
-            lastName.setText(lastName.getText());
-            address.setText(address.getText());
-            phoneNumber.setText(phoneNumber.getText());
+
+            if(firstName.getText().equals("")) {
+                firstNameLabel.setForeground(Color.RED);
+
+                errorLabel.setVisible(true);
+                Collections.sort(contacts);
+                contacts2.setListData(contacts.toArray());
+                contacts2.clearSelection();
+                Collections.sort(contacts);
+                contacts2.setListData(contacts.toArray());
+                contacts2.clearSelection();
+                firstName.setText(firstName.getText());
+                lastName.setText(lastName.getText());
+                address.setText(address.getText());
+                phoneNumber.setText(phoneNumber.getText());
+                return;
+            }
+            if(lastName.getText().equals("")) {
+                lastNameLabel.setForeground(Color.RED);
+
+
+                errorLabel.setVisible(true);
+                Collections.sort(contacts);
+                contacts2.setListData(contacts.toArray());
+                contacts2.clearSelection();
+                Collections.sort(contacts);
+                contacts2.setListData(contacts.toArray());
+                contacts2.clearSelection();
+                firstName.setText(firstName.getText());
+                lastName.setText(lastName.getText());
+                address.setText(address.getText());
+                phoneNumber.setText(phoneNumber.getText());
+                return;
+            }
 
             BufferedReader reader;
             int x = 0;
@@ -357,6 +387,12 @@ public class RoliPokeDex extends JFrame {
             neww.setVisible(true);
 
             contacts2.clearSelection();
+            lastNameLabel.setForeground(Color.BLACK);
+            firstNameLabel.setForeground(Color.BLACK);
+
+            errorLabel.setVisible(false);
+            Collections.sort(contacts);
+            contacts2.setListData(contacts.toArray());
             //TODO 3/5/19 : CHANGE FILE TO SAVE CHANGES
         }
 
