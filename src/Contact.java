@@ -1,7 +1,7 @@
 public class Contact implements Comparable {
     String firstName="",lastName="",address="";
-    int number;
-    public Contact(String firstName, String lastName, int number, String address){
+    Long number;
+    public Contact(String firstName, String lastName, Long number, String address){
         this.firstName=firstName;
         this.lastName=lastName;
         this.number=number;
@@ -20,7 +20,7 @@ public class Contact implements Comparable {
         this.address = address;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 
@@ -36,7 +36,7 @@ public class Contact implements Comparable {
         return address;
     }
 
-    public int getNumber() {
+    public Long getNumber() {
         return number;
     }
 
@@ -47,11 +47,11 @@ public class Contact implements Comparable {
     public int compareTo(Object o) {
         Contact k= (Contact)o;
 
-        if(((Contact) o).getLastName().compareTo(getLastName())!=0) {
-            return ((Contact) o).getLastName().compareTo(getLastName());
+        if(((Contact) o).getLastName().compareToIgnoreCase(getLastName())!=0) {
+            return ((Contact) o).getLastName().compareToIgnoreCase(getLastName());
         }
         else {
-            return ((Contact) o).getFirstName().compareTo(getFirstName());
+            return ((Contact) o).getFirstName().compareToIgnoreCase(getFirstName());
         }
     }
 }
