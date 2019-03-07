@@ -183,12 +183,12 @@ public class RoliPokeDex extends JFrame {
                               System.out.println(oldValue.getLastName());
                               System.out.println("JAI HOOO");
                               JOptionPane jOptionPane = new JOptionPane("Confirm Changes");
-                          /*jOptionPane.setVisible(true);
-                          add(jOptionPane);*/
+                              JDialog jDialog= jOptionPane.createDialog((Frame)null,"Would you like to change away? All unsaved changes will be lost.");
+                                add(jOptionPane,SwingConstants.RIGHT);
                               Object[] op = {"Yes", "No"};
                               int result = JOptionPane.showOptionDialog(jOptionPane, "Would you like to change away? All unsaved changes will be lost.", "Confirm Changeaway", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, op, op[1]);
-                              jOptionPane.setBounds(0,0,200,200);
-                              jOptionPane.setVisible(true);
+                                jOptionPane.setAlignmentX(800);
+                              jOptionPane.setAlignmentY(400);
                               if (JOptionPane.YES_OPTION == result) {
                                   firstName.setText(contacts.get(yeetIndex).getFirstName());
 
